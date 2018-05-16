@@ -1,0 +1,146 @@
+<div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header tblMenu" style="padding: 15px 15px 5px 15px;">
+        <ul class="header-dropdown" style="float: right; margin-bottom: 0;">
+          <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+            <i class="material-icons" style="font-size: 16pt; color: #FFFFFF;" title="閉じる" data-dismiss="modal">close</i>
+          </a>
+        </ul>
+        <h4 class="modal-title" id="largeModalLabel">
+          <span style="color: white;">タスク編集</span>
+        </h4>
+      </div>
+      <div class="modal-body">
+        <table style="border: none; width: 100%;">
+          <tbody>
+            <tr>
+              <td style="vertical-align: top;">
+                <div class="card">
+                  <div class="body">
+                    <div class="dt_buttons" style="padding-bottom: 10px;">
+                      <button type="button" class="btn btn-bg waves-effect" style="width:80px;">保存</button>
+                      <button type="button" class="btn btn-bg waves-effect" style="width:80px;">削除</button>
+                      <span style="float: right; padding-right: 20px;">
+<!-- 															<button type="button" class="btn btn-bg waves-effect" style="width: 80px;" data-dismiss="modal">閉じる</button> -->
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="body" id="search_body">
+                      <table class="table table-bordered">
+                          <tbody>
+                            <tr>
+                              <td class="tblMenu col-lg-1">番号（No.）</td>
+                              <td colspan="2">{{task.No}}</td>
+                              <td class="tblMenu col-lg-1">作成日</td>
+                              <td colspan="2">{{task.creatdate | date}}</td>
+                            </tr>
+                            <tr>
+                              <td class="tblMenu">
+                                <span color="red">タイトル<b>【必須】</b></span>
+                                <div class="help-info" style="font-size: 10px;">最大○○文字</div>
+                              </td>
+                              <td colspan="4">
+                                <div class="form-group" style="margin-bottom: 0;margin-top: 10px;">
+                                  <div class="form-line">
+                                    <input id="txtAreaTitle" class="form-control no-resize auto-growth" placeholder="タイトルを入力" [value]="task.title">
+                                  </div>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="tblMenu">
+                                詳細内容
+                                <div class="help-info" style="font-size: 10px;">最大○○○文字</div>
+                              </td>
+                              <td colspan="4">
+                                <div class="form-group" style="margin-bottom: 0;">
+                                  <div class="form-line">
+                                    <textarea class="form-control no-resize auto-growth" placeholder="詳細内容を入力" [value]="task.description"></textarea>
+                                  </div>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="tblMenu">重要度</td>
+                              <td colspan="2">
+                                <div class="btn-group">
+                                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    {{task.priority}} <span class="caret"></span> <span class="sr-only">Toggle Dropdown</span> <span class="fa fa-caret-down"></span>
+                                  </button>
+                                  <ul class="dropdown-menu">
+                                    <li><a href="javascript:void(0);">なし</a></li>
+                                    <li><a href="javascript:void(0);">高</a></li>
+                                    <li><a href="javascript:void(0);">中</a></li>
+                                    <li><a href="javascript:void(0);">低</a></li>
+                                  </ul>
+                                </div>
+                              </td>
+                              <td class="tblMenu">作業状況</td>
+                              <td colspan="2">
+                                <div class="btn-group">
+                                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    {{task.state}} <span class="caret"></span> <span class="sr-only">Toggle Dropdown</span> <span class="fa fa-caret-down"></span>
+                                  </button>
+                                  <ul class="dropdown-menu">
+                                    <li><a href="javascript:void(0);">なし</a></li>
+                                    <li><a href="javascript:void(0);">開始前</a></li>
+                                    <li><a href="javascript:void(0);">作業中</a></li>
+                                    <li><a href="javascript:void(0);">作業完了</a></li>
+                                  </ul>
+                                </div>
+                            </tr>
+                            <tr>
+                              <td class="tblMenu">
+                                期限
+                                <div class="help-info" style="font-size: 10px;">yyyy/MM/dd HH24:mm形式</div>
+                              </td>
+                              <td colspan="2">
+                                <div class="form-group" style="margin-bottom: 0;">
+                                  <div class="form-line" style="display: inline-block;">
+                                    <input type="text" class="datetimepicker form-control" [value]="task.deadline" placeholder="期限を入力" style="float: left; width: 95%" />
+                                    <div class="datetimepicker-trigger" style="float: right; cursor: hand; cursor: pointer;">
+                                      <i class="material-icons">event</i> <span class="icon-name"></span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </td>
+                              <td class="tblMenu">
+                                開始日時
+                                <div class="help-info" style="font-size: 10px;">yyyy/MM/dd HH24:mm形式</div>
+                              </td>
+                              <td colspan="2">
+                                <div class="form-group" style="margin-bottom: 0;">
+                                  <div class="form-line" style="display: inline-block;">
+                                    <input type="text" class="datetimepicker form-control" [value]="task.startdate" placeholder="開始日時を入力" style="float: left; width: 95%" />
+                                    <div class="datetimepicker-trigger" style="float: right; cursor: hand; cursor: pointer;">
+                                      <i class="material-icons">event</i> <span class="icon-name"></span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="tblMenu">
+                                <span color="red">作成者<b>【必須】</b></span>
+                              </td>
+                              <td colspan="2">
+                                <div class="form-group" style="margin-bottom: 0;">
+                                  <div class="form-line">
+                                    <input type="text" id="regist_org" class="form-control" [value]="task.author" placeholder="ログイン情報から取得予定">
+                                  </div>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
